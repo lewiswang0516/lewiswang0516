@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10100e",
+  themeColor: "#111110",
 };
 
 export default function RootLayout({
@@ -62,8 +62,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${schibsted.variable} antialiased`}>
-      <body className="bg-canvas font-grotesk text-ink">
+    <html lang="en" className={`dark ${schibsted.variable} antialiased`}>
+      <body className="bg-sand-1 font-grotesk text-sand-12">
         <Providers>{children}</Providers>
         <JsonLd />
       </body>

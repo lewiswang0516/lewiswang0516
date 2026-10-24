@@ -19,9 +19,9 @@ export default function Home() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-[760px] flex-col px-5 md:px-8">
       <noscript>
-        <div className="py-6 text-sm text-dim">
+        <div className="py-6 text-body text-sand-11">
           This assistant needs JavaScript. Visit{" "}
-          <a href="/portfolio" className="text-blue underline underline-offset-4">
+          <a href="/portfolio" className="text-indigo-11 underline underline-offset-4">
             the portfolio
           </a>{" "}
           instead.
@@ -29,15 +29,15 @@ export default function Home() {
       </noscript>
       <ModeToggle current="ask" offset="bottom-24 min-[960px]:bottom-6" />
       <header className="flex items-center justify-between py-6">
-        <span className="text-xl font-bold tracking-tight">Zane Wang</span>
+        <span className="text-body font-bold tracking-tight">Zane Wang</span>
       </header>
 
       {empty ? (
         <div className="flex flex-1 flex-col justify-center pb-24">
-          <h1 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold tracking-tight">
+          <h1 className="text-title font-bold tracking-tight">
             Ask me anything about Zane
           </h1>
-          <p className="mt-3 text-dim">
+          <p className="mt-3 text-sand-11">
             A grounded assistant that answers from Zane&apos;s work, projects, and experience.
           </p>
           <div className="mt-8">
@@ -49,7 +49,7 @@ export default function Home() {
                 key={q}
                 type="button"
                 onClick={() => send(q)}
-                className="rounded-full border border-line px-3 py-1.5 text-sm text-dim transition-colors hover:border-ink/50 hover:text-ink"
+                className="border-thin rounded-full border-sand-7 px-3 py-1.5 text-left text-body text-sand-11 transition-colors hover:border-sand-8 hover:text-sand-12"
               >
                 {q}
               </button>
@@ -58,10 +58,7 @@ export default function Home() {
         </div>
       ) : (
         <div className="flex flex-1 flex-col">
-          <div
-            data-lenis-prevent
-            className="flex-1 space-y-6 overflow-y-auto py-6"
-          >
+          <div className="flex-1 space-y-6 overflow-y-auto py-6">
             {messages.map((m) => (
               <Message key={m.id} message={m} streaming={status === "streaming"} />
             ))}
@@ -72,7 +69,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={stop}
-                className="text-sm text-dim underline-offset-4 hover:text-ink hover:underline"
+                className="text-caption text-sand-11 underline-offset-4 hover:text-sand-12 hover:underline"
               >
                 Stop
               </button>
@@ -80,13 +77,13 @@ export default function Home() {
               <button
                 type="button"
                 onClick={regenerate}
-                className="text-sm text-dim underline-offset-4 hover:text-ink hover:underline"
+                className="text-caption text-sand-11 underline-offset-4 hover:text-sand-12 hover:underline"
               >
                 Regenerate
               </button>
             ) : null}
           </div>
-          <div className="sticky bottom-0 bg-canvas pb-6 pt-2">
+          <div className="sticky bottom-0 bg-sand-1 pb-6 pt-2">
             <Composer onSubmit={send} disabled={status === "streaming"} />
           </div>
         </div>

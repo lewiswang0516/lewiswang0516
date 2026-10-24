@@ -21,18 +21,18 @@ export function Message({
   };
 
   return (
-    <div className="text-[15px] leading-relaxed">
-      <div className="mb-1 text-xs text-dim">{isUser ? "You" : "Zane"}</div>
+    <div className="text-body">
+      <div className="mb-1 text-caption text-sand-11">{isUser ? "You" : "Zane"}</div>
       {isUser ? (
         <p className="whitespace-pre-wrap">{message.content}</p>
       ) : (
         <div className="answer">
           <ReactMarkdown>{message.content}</ReactMarkdown>
           {message.pending && streaming ? (
-            <span className="ml-0.5 inline-block h-4 w-2 animate-pulse bg-ink align-middle" />
+            <span className="ml-0.5 inline-block h-4 w-2 bg-sand-12 align-middle" />
           ) : null}
           {message.sources && message.sources.length > 0 ? (
-            <p className="mt-3 text-xs text-dim">
+            <p className="mt-3 text-caption text-sand-11">
               Source: {message.sources.join(", ")}
             </p>
           ) : null}
@@ -40,7 +40,7 @@ export function Message({
             <button
               type="button"
               onClick={copy}
-              className="mt-2 text-xs text-dim underline-offset-4 hover:text-ink hover:underline"
+              className="mt-2 text-caption text-sand-11 underline-offset-4 hover:text-sand-12 hover:underline"
             >
               {copied ? "Copied" : "Copy"}
             </button>
