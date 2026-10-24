@@ -18,7 +18,7 @@ export function Composer({
   };
 
   return (
-    <div className="flex items-end gap-2 border border-line-strong rounded-2xl bg-canvas px-4 py-3 focus-within:border-ink/60">
+    <div className="border-thin flex items-end gap-2 rounded-2xl border-sand-7 bg-sand-1 px-4 py-3 transition-colors focus-within:border-indigo-8">
       <textarea
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -31,13 +31,13 @@ export function Composer({
         rows={1}
         maxLength={500}
         placeholder="Ask me anything about Zane"
-        className="max-h-40 flex-1 resize-none bg-transparent text-[15px] leading-relaxed text-ink outline-none placeholder:text-dim"
+        className="max-h-40 flex-1 resize-none bg-transparent text-body text-sand-12 outline-none placeholder:text-sand-11"
       />
       <button
         type="button"
         onClick={submit}
         disabled={disabled || !value.trim()}
-        className="shrink-0 rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-canvas transition-opacity disabled:opacity-40"
+        className="shrink-0 rounded-full bg-indigo-9 px-4 py-1.5 text-body font-semibold text-indigo-contrast transition-colors hover:bg-indigo-10 disabled:opacity-40"
       >
         Send
       </button>

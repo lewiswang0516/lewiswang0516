@@ -1,40 +1,107 @@
 @import "tailwindcss";
 
+/* Radix dark scales. The site is dark only: <html> carries the .dark class. */
+@import "@radix-ui/colors/sand-dark.css";
+@import "@radix-ui/colors/indigo-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+:root {
+  --indigo-contrast: #ffffff;
+  --red-contrast: #ffffff;
+}
+
 @theme inline {
-  --color-canvas: #10100e;
-  --color-ink: #e8e6dd;
-  --color-dim: #9b9789;
-  --color-line: rgba(232, 230, 221, 0.14);
-  --color-line-strong: rgba(232, 230, 221, 0.35);
-  --color-blue: #5c7cff;
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-sand-1: var(--sand-1);
+  --color-sand-2: var(--sand-2);
+  --color-sand-3: var(--sand-3);
+  --color-sand-4: var(--sand-4);
+  --color-sand-5: var(--sand-5);
+  --color-sand-6: var(--sand-6);
+  --color-sand-7: var(--sand-7);
+  --color-sand-8: var(--sand-8);
+  --color-sand-9: var(--sand-9);
+  --color-sand-10: var(--sand-10);
+  --color-sand-11: var(--sand-11);
+  --color-sand-12: var(--sand-12);
+
+  --color-indigo-1: var(--indigo-1);
+  --color-indigo-2: var(--indigo-2);
+  --color-indigo-3: var(--indigo-3);
+  --color-indigo-4: var(--indigo-4);
+  --color-indigo-5: var(--indigo-5);
+  --color-indigo-6: var(--indigo-6);
+  --color-indigo-7: var(--indigo-7);
+  --color-indigo-8: var(--indigo-8);
+  --color-indigo-9: var(--indigo-9);
+  --color-indigo-10: var(--indigo-10);
+  --color-indigo-11: var(--indigo-11);
+  --color-indigo-12: var(--indigo-12);
+  --color-indigo-contrast: var(--indigo-contrast);
+
+  --color-red-1: var(--red-1);
+  --color-red-2: var(--red-2);
+  --color-red-3: var(--red-3);
+  --color-red-4: var(--red-4);
+  --color-red-5: var(--red-5);
+  --color-red-6: var(--red-6);
+  --color-red-7: var(--red-7);
+  --color-red-8: var(--red-8);
+  --color-red-9: var(--red-9);
+  --color-red-10: var(--red-10);
+  --color-red-11: var(--red-11);
+  --color-red-12: var(--red-12);
+  --color-red-contrast: var(--red-contrast);
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1.5;
+  --text-body: 15px;
+  --text-body--line-height: 1.6;
+  --text-title: 30px;
+  --text-title--line-height: 1.2;
+  --text-display: clamp(44px, 7vw, 88px);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.02em;
+
+  --default-transition-duration: 250ms;
+  --default-transition-timing-function: ease-out;
+
   --font-grotesk: var(--font-schibsted);
+}
+
+@utility border-thin {
+  border-width: 0.5px;
+}
+@utility border-t-thin {
+  border-top-width: 0.5px;
+}
+@utility border-b-thin {
+  border-bottom-width: 0.5px;
+}
+@utility border-l-thin {
+  border-left-width: 0.5px;
+}
+@utility border-r-thin {
+  border-right-width: 0.5px;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 16px;
   color-scheme: dark;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
+body {
+  font-size: var(--text-body);
+  line-height: 1.6;
 }
 
 ::selection {
-  background: #5c7cff;
-  color: #ffffff;
+  background: var(--indigo-9);
+  color: var(--indigo-contrast);
 }
 
 *:focus-visible {
@@ -54,23 +121,19 @@ html.lenis body {
 .answer ol { list-style: decimal; padding-left: 1.25rem; margin: 0 0 0.75rem; }
 .answer li { margin-bottom: 0.25rem; }
 .answer strong { font-weight: 700; }
-.answer a { color: var(--color-blue); text-decoration: underline; text-underline-offset: 4px; }
+.answer a { color: var(--indigo-11); text-decoration: underline; text-underline-offset: 4px; }
 .answer code {
   font-family: ui-monospace, monospace;
   font-size: 0.85em;
-  background: var(--color-line);
+  background: var(--sand-3);
   padding: 0.1em 0.35em;
   border-radius: 4px;
 }
 .answer pre {
-  background: var(--color-line);
+  background: var(--sand-3);
   padding: 0.75rem;
   border-radius: 8px;
   overflow-x: auto;
   margin: 0 0 0.75rem;
 }
 .answer pre code { background: transparent; padding: 0; }
-
-@media (prefers-reduced-motion: reduce) {
-  .answer .animate-pulse { animation: none; }
-}
