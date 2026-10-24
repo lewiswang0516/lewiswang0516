@@ -305,15 +305,15 @@ export const aiPractice = {
 export const aiTools: AiTool[] = [
   {
     name: "Claude Code",
-    role: "Primary agentic pair",
+    role: "Orchestrator",
     description:
-      "My main driver for end-to-end feature work, refactors and debugging. Multi-file edits, skills and test loops run here, with code review keeping the bar where it belongs.",
+      "My main driver for feature work, refactors and debugging. The main session plans and reviews, then hands scoped briefs to subagents: Sonnet and Opus implementers, Opus and Fable reviewers, and a read-only researcher.",
   },
   {
     name: "Codex",
     role: "Parallel verification",
     description:
-      "A second, independent agent I run alongside to cross-check changes, explore alternative approaches and pressure-test decisions before they land.",
+      "A second, independent agent that follows the same rules through its own AGENTS.md. I run it alongside to cross-check changes, explore alternative approaches and pressure-test decisions before they land.",
   },
   {
     name: "Cursor",
@@ -330,7 +330,7 @@ export const aiPrinciples: AiPrinciple[] = [
   },
   {
     title: "Errors are never swallowed",
-    body: "Every error is thrown, returned or reported. No silent default-success, no hiding failures behind fallback values.",
+    body: "Every error is thrown, returned or reported. No silent default-success, no hiding failures behind fallback values. Batch jobs that skip records report the count and the reasons.",
   },
   {
     title: "Every loop has a budget",
@@ -338,14 +338,22 @@ export const aiPrinciples: AiPrinciple[] = [
   },
   {
     title: "Reuse before building",
-    body: "Before writing a feature I search for an existing open-source solution. I would rather adopt a proven tool than reinvent the wheel.",
+    body: "Before writing code I check, in order: does it need to exist, is there a helper in the codebase, the standard library, a platform feature, an installed dependency, then a proven open-source project. Only then do I write the minimum code that works.",
   },
   {
-    title: "Minimum code that does the job",
-    body: "No speculative features, no abstractions for single-use logic. I optimise for simplicity, robustness and long-term maintainability over short-term speed.",
+    title: "The orchestrator accepts the work",
+    body: "Subagents implement from a brief with checkable \"Done when\" criteria and never run checks. The orchestrator reads the diff and runs build, tests and lint itself. A claim without evidence counts as not done.",
   },
   {
     title: "Tests verify behaviour",
-    body: "Tests check values, structure, side effects and error types, not just that code runs without throwing. Weak tests get flagged, not counted.",
+    body: "Bug fixes start from a reproduction close to real use. The failing test lands in its own commit before the fix, so red and green are both on record. Tests check values, structure, side effects and error types.",
+  },
+  {
+    title: "Rules enforced by hooks",
+    body: "The rules that matter most do not rely on the model remembering them. Claude Code hooks block pushes to protected branches and AI attribution in commits, and stop subagents from running checks.",
+  },
+  {
+    title: "Handover over memory",
+    body: "Each major feature keeps a committed HANDOVER doc with the goal, current state, known bugs, how to check it and next steps. Any agent in any worktree can pick up the work from it alone.",
   },
 ];
