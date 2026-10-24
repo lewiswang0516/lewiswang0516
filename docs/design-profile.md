@@ -88,6 +88,8 @@ Tracking: `-0.02em` on display, `tight` on title.
 | Effect | Decision |
 | --- | --- |
 | Scroll reveal (`Reveal`) | Keep. 250ms ease-out, 8px rise, no stagger delay above 100ms. |
+| Hero headline line slide and load fades | Replace with the same scroll reveal. |
+| Screenshot hover lift | Remove. |
 | Number ticker (`NumberTicker`) | Remove. Render the final number. |
 | Lenis smooth scrolling | Remove. Anchor links use native `scroll-behavior: smooth`, which `prefers-reduced-motion` turns off. |
 | Streaming cursor pulse | Remove. Show a static cursor while the answer streams. |
